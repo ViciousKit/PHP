@@ -13,8 +13,10 @@ function checkEmail($email) {
 
 function censorComment($comment) {
     $pattern = '/#[a-z]{3,}#/';
+    $pattern2 = '/\r\n|\r|\n/u';
     if($comment) {
-        return preg_replace($pattern, 'censored', strtolower($comment));
+        $comment = preg_replace($pattern, 'censored', strtolower($comment));
+        return preg_replace($pattern2, ' ', $comment);
     }
     else echo 'Введите комментарий';
 }
@@ -43,7 +45,7 @@ if( $_POST ) {
     <input type="submit" name="button">
 </form>
 
-<div>
+<div style="width:50%">
 <?php
 if(file_exists('cash.txt')) {
      $content = file_get_contents('cash.txt');
