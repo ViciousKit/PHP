@@ -23,7 +23,7 @@ function censorComment($comment) {
 
 function saveToCash($email, $comment) {
     $cashfile = 'cash.txt';
-    $content = "$email\r\n$comment\r\n\r\n"; 
+    $content = "$email\r\n$comment\r\n\r\n";
     file_put_contents($cashfile, $content, FILE_APPEND);
 }
 
@@ -45,7 +45,7 @@ if( $_POST ) {
     <input type="submit" name="button">
 </form>
 
-<div style="width:50%">
+<div style="width:50%;">
 <?php
 if(file_exists('cash.txt')) {
      $content = file_get_contents('cash.txt');
